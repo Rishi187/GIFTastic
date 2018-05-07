@@ -1,6 +1,17 @@
 
+var starWarsArray = ["Darth Maul","Darth Sidious", "Darth Vader", "Yoda", "Mace windu","Chewbacca", "Han Solo", "Rey", "R2D2", "C3PO","Jabba","Boba Fett", "Darth Tyranus"];
+
+for ( var i= 0; i < starWarsArray.length; i++){
+  var button = $("<button>");
+  button.text(starWarsArray[i]);
+  button.attr("data-person", starWarsArray[i]);
+  $(".col-md").append(button);
+}
+
+
+
 // Event listener for all button elements
-$("button").on("click", function() {
+$(document).on("click", "button", function() {
     // In this case, the "this" keyword refers to the button that was clicked
     var person = $(this).attr("data-person");
 
@@ -25,12 +36,8 @@ $("button").on("click", function() {
           var stillLink = results[i].images.fixed_height_still.url
           console.log(movingLink)
           console.log(stillLink)
-
-
-          // Only taking action if the photo has an appropriate rating
-          // if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-            // Creating a div with the class "item"
-            var gifDiv = $("<div class='item'>");
+            
+          var gifDiv = $("<div class='item'>");
             
             // Storing the result item's rating
             var rating = results[i].rating;
@@ -72,3 +79,17 @@ $("button").on("click", function() {
       $(this).attr('src', $(this).attr('data-still'))
     }
   })
+
+$("#add-starwar").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the artist name
+    var inputStarWars = $("#starwar-input").val().trim();
+
+    var newButton = $("<button>"); 
+    newButton.text(inputStarWars);
+    newButton.attr("data-person", inputStarWars);
+    $(".col-md").append(newButton);
+
+    // Running the searchBandsInTown function (passing in the artist as an argument)
+  });

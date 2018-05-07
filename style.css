@@ -8,5 +8,10 @@ h1 {
 button {
     color: silver;
     background: black;
+    margin:0 auto;
+    margin-right:10px;
+    float:center;
 
 }
+
+
